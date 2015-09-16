@@ -57,8 +57,8 @@ class MarkerviewsController extends AppController
 
         $markerviews = $this->Markerviews->find()
             ->where($conditions)
-            ->order(['Markerviews.created' => 'DESC'])
-            ->limit($limit)->page($page)->offset($offset)
+            ->order(['Markerviews.created' => 'ASC'])
+            //->limit($limit)->page($page)->offset($offset)
             ->toArray();
         $allMarkerviews = $this->Markerviews->find()->where($conditions);
         $total = $allMarkerviews->count();
