@@ -81,11 +81,14 @@ class MarkersTable extends Table
             ->allowEmpty('twitID');
 
         $validator
-            ->add('twitCreated', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('twitCreated');
+            ->allowEmpty('twitPlaceID');
 
         $validator
-            ->allowEmpty('twitPlaceID');
+            ->add('twitTime', 'valid', ['rule' => 'datetime'])
+            ->allowEmpty('twitTime');
+
+        $validator
+            ->allowEmpty('twitURL');
 
         $validator
             ->allowEmpty('twitPlaceName');

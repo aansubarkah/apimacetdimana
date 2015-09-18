@@ -57,7 +57,7 @@ class MarkerviewsController extends AppController
 
         $markerviews = $this->Markerviews->find()
             ->where($conditions)
-            ->order(['Markerviews.created' => 'ASC'])
+            ->order(['Markerviews.twitTime' => 'ASC', 'Markerviews.created' => 'ASC'])
             //->limit($limit)->page($page)->offset($offset)
             ->toArray();
         $allMarkerviews = $this->Markerviews->find()->where($conditions);

@@ -21,6 +21,7 @@ class MarkersTableTest extends TestCase
         'app.categories',
         'app.markerviews',
         'app.users',
+        'app.groups',
         'app.respondents',
         'app.weather'
     ];
