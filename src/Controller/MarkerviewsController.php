@@ -47,8 +47,8 @@ class MarkerviewsController extends AppController
         $conditions = [
             'Markerviews.active' => true,
             'OR' => [
-                'Markerviews.created >=' => date('Y-m-d H:i:s', strtotime($lastMinutesString)),
-                'AND' => [
+                'Markerviews.twitTime >=' => date('Y-m-d H:i:s', strtotime($lastMinutesString)),//@todo when saving info from
+                'AND' => [//old way, twitTime must be added with the same value as created field
                     'Markerviews.pinned' => true,
                     'Markerviews.cleared' => false,
                 ]
