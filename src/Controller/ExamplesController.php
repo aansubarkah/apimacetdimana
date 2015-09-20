@@ -65,10 +65,10 @@ class ExamplesController extends AppController
         $keywordPosition = array_search($keyword, $textArr);
         $textToReturn = $textArr[$keywordPosition];
 
-        if (($keywordPosition - 1) > 0) {
+        if (($keywordPosition - 1) >= 0) {
             $textToReturn = $textArr[$keywordPosition - 1] . ' ' . $textToReturn;
         }
-        if (($keywordPosition + 1) < $countTextArr) {
+        if (($keywordPosition + 1) <= $countTextArr) {
             $textToReturn = $textToReturn . ' ' . $textArr[$keywordPosition + 1];
         }
 
@@ -87,13 +87,20 @@ class ExamplesController extends AppController
         Magelang Tengah, Kota Magelang, Jawa Tengah 56117
         -7.473215, 110.218126
          * */
-        $geocode = '-7.473215,110.218126,1000km';
+        /*
+   *
+   Jalan Medan Merdeka Utara No.9-13
+   Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110
+   -6.171476, 106.826937
+   * */
+        //$geocode = '-7.473215,110.218126,1000km';
+        $geocode = '-6.171305,106.827967,1000km';
         $Twitter = new TwitterAPIExchange($this->settingsTwitter);
 
         $url = $this->baseTwitterUrl . 'search/tweets.json';
         $getfield = '?q=' . $q;
         $getfield = $getfield . '&since_id=1';
-        $count = 100;
+        $count = 50;
 
         $getfield = $getfield . '&geocode=' . $geocode;
         $getfield = $getfield . '&q=' . $q;
