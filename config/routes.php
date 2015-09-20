@@ -46,6 +46,7 @@ Router::extensions(['json']);
 Router::scope('/', function ($routes) {
     // api interface
     $routes->resources('Markerviews');
+    $routes->resources('Examples');
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
