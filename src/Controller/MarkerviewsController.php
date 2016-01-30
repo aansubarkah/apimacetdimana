@@ -36,7 +36,7 @@ class MarkerviewsController extends AppController
             }
         }
 
-        $lastMinutes = 30;//default is past 30 minutes
+        $lastMinutes = 180;//default is past 180 minutes
         if (isset($this->request->query['lastminutes'])) {
             if (is_numeric($this->request->query['lastminutes'])) {
                 $lastMinutes = $this->request->query['lastminutes'];
