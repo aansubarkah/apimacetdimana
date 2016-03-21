@@ -4,20 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Access Entity.
+ * Cpus Entity.
  *
  * @property int $id
- * @property string $ip
- * @property int $browser_id
- * @property int $cpu_id
- * @property int $device_id
- * @property int $engine_id
- * @property int $system_id
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
+ * @property string $architecture
  * @property bool $active
  */
-class Access extends Entity
+class Cpus extends Entity
 {
 
     /**

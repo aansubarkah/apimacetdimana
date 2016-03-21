@@ -10,6 +10,11 @@ use Cake\Validation\Validator;
 /**
  * Accesses Model
  *
+ * @property \Cake\ORM\Association\BelongsTo $Browsers
+ * @property \Cake\ORM\Association\BelongsTo $Cpus
+ * @property \Cake\ORM\Association\BelongsTo $Devices
+ * @property \Cake\ORM\Association\BelongsTo $Engines
+ * @property \Cake\ORM\Association\BelongsTo $Systems
  */
 class AccessesTable extends Table
 {
@@ -30,6 +35,26 @@ class AccessesTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Browsers', [
+            'foreignKey' => 'browser_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Cpus', [
+            'foreignKey' => 'cpu_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Devices', [
+            'foreignKey' => 'device_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Engines', [
+            'foreignKey' => 'engine_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Systems', [
+            'foreignKey' => 'system_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -44,7 +69,6 @@ class AccessesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->add('ip', 'valid', ['rule' => 'numeric'])
             ->requirePresence('ip', 'create')
             ->notEmpty('ip');
 
@@ -54,5 +78,32 @@ class AccessesTable extends Table
             ->notEmpty('active');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['browser_id'], 'Browsers'));
+        $rules->add($rules->existsIn(['cpu_id'], 'Cpus'));
+        $rules->add($rules->existsIn(['device_id'], 'Devices'));
+        $rules->add($rules->existsIn(['engine_id'], 'Engines'));
+        $rules->add($rules->existsIn(['system_id'], 'Systems'));
+        return $rules;
+    }
+
+    /**
+     * Returns the database connection name to use by default.
+     *
+     * @return string
+     */
+    public static function defaultConnectionName()
+    {
+        return 'alternative';
     }
 }

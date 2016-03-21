@@ -45,19 +45,23 @@ Router::extensions(['json']);
 
 Router::scope('/', function ($routes) {
     // api interface
+    //$routes->extension(['json']);
     $routes->resources('Markerviews');
-    $routes->resources('Examples');
+    $routes->resources('Accesses');
+    //$routes->resources('Examples');
+    //$routes->fallbacks('InflectedRoute');
+
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    //$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     /**
      * Connect catchall routes for all controllers.

@@ -201,3 +201,8 @@ DispatcherFactory::add('ControllerFactory');
  */
 Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();
+
+DispatcherFactory::add('Asset');
+DispatcherFactory::add('Routing');
+DispatcherFactory::add('ControllerFactory');
+DispatcherFactory::add('REST', ['priority' => 1]);

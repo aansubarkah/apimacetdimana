@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Markerviews Controller
@@ -12,6 +13,8 @@ class MarkerviewsController extends AppController
 {
 
     public $limit = 25;
+
+    public $Access = null;
 
     /**
      * Index method
@@ -62,6 +65,23 @@ class MarkerviewsController extends AppController
             ->toArray();
         $allMarkerviews = $this->Markerviews->find()->where($conditions);
         $total = $allMarkerviews->count();
+
+        // fill access table
+        /*$clientIp = $this->request->clientIp();
+        $newAccess = [
+            'ip' => $clientIp,
+            'browser_id' => 1,
+            'cpu_id' => 1,
+            'device_id' => 1,
+            'engine_id' => 1,
+            'system_id' => 1,
+            'active' => 1
+        ];
+
+        $this->Access = TableRegistry::get('Accesses');
+        $access = $this->Access->newEntity($newAccess);
+        $this->Access->save($access);*/
+        // end of fill access table
 
         $meta = [
             'total' => $total
