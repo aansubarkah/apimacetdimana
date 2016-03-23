@@ -79,9 +79,6 @@ class AccessesController extends AppController
 
             $dataToSave['active'] = 1;
 
-            $dataToSave['lat'] = $this->request->data['access']['lat'];
-            $dataToSave['lng'] = $this->request->data['access']['lng'];
-
             $access = $this->Accesses->newEntity($dataToSave);
             $this->Accesses->save($access);
             }

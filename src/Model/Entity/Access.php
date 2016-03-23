@@ -13,8 +13,6 @@ use Cake\ORM\Entity;
  * @property int $device_id
  * @property int $engine_id
  * @property int $system_id
- * @property float $lat
- * @property float $lng
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property bool $active

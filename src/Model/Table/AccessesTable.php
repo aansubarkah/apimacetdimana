@@ -73,16 +73,6 @@ class AccessesTable extends Table
             ->notEmpty('ip');
 
         $validator
-            ->add('lat', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('lat', 'create')
-            ->notEmpty('lat');
-
-        $validator
-            ->add('lng', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('lng', 'create')
-            ->notEmpty('lng');
-
-        $validator
             ->add('active', 'valid', ['rule' => 'boolean'])
             ->requirePresence('active', 'create')
             ->notEmpty('active');
