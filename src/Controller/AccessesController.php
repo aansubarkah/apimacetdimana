@@ -81,7 +81,7 @@ class AccessesController extends AppController
 
             $access = $this->Accesses->newEntity($dataToSave);
             $this->Accesses->save($access);
-            }
+        }
         $this->set(compact('access'));
         $this->set('_serialize', ['access']);
     }
@@ -331,9 +331,12 @@ class AccessesController extends AppController
         $access = $this->Accesses->get($id);
         if ($this->Accesses->delete($access)) {
             $this->Flash->success(__('The access has been deleted.'));
-    } else {
-        $this->Flash->error(__('The access could not be deleted. Please, try again.'));
+        } else {
+            $this->Flash->error(__('The access could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(['action' => 'index']);
     }
-    return $this->redirect(['action' => 'index']);
-    }
-    }
+}
+/*
+CREATE VIEW accessesviews AS SELECT a.id as id, a.ip as ip, a.browser_id as browser_id, b.name as browserName, b.version as browserVersion, a.cpu_id as cpu_id, c.architecture as cpuArchitecture, a.device_id as device_id, d.model as deviceModel, d.type as deviceType, d.vendor as deviceVendor, a.engine_id as engine_id, e.name as engineName, e.version as engineVersion, a.system_id as system_id, s.name as systemName, s.version as systemVersion, a.created as created, a.modified as modified, a.active as active FROM accesses a LEFT JOIN browsers b ON a.browser_id = b.id LEFT JOIN cpus c ON a.cpu_id = c.id LEFT JOIN devices d ON a.device_id = d.id LEFT JOIN engines e ON a.engine_id = e.id LEFT JOIN systems s ON a.system_id = s.id
+*/
