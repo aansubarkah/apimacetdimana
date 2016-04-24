@@ -4,21 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Access Entity.
+ * Page Entity.
  *
  * @property int $id
- * @property string $ip
- * @property int $browser_id
- * @property int $cpu_id
- * @property int $device_id
- * @property int $engine_id
- * @property int $system_id
- * @property int $page_id
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
+ * @property string $name
  * @property bool $active
+ * @property \App\Model\Entity\Access[] $accesses
+ * @property \App\Model\Entity\Position[] $positions
  */
-class Access extends Entity
+class Page extends Entity
 {
 
     /**

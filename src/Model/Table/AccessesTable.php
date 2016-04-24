@@ -15,6 +15,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Devices
  * @property \Cake\ORM\Association\BelongsTo $Engines
  * @property \Cake\ORM\Association\BelongsTo $Systems
+ * @property \Cake\ORM\Association\BelongsTo $Pages
  */
 class AccessesTable extends Table
 {
@@ -53,6 +54,10 @@ class AccessesTable extends Table
         ]);
         $this->belongsTo('Systems', [
             'foreignKey' => 'system_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Pages', [
+            'foreignKey' => 'page_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -94,6 +99,7 @@ class AccessesTable extends Table
         $rules->add($rules->existsIn(['device_id'], 'Devices'));
         $rules->add($rules->existsIn(['engine_id'], 'Engines'));
         $rules->add($rules->existsIn(['system_id'], 'Systems'));
+        $rules->add($rules->existsIn(['page_id'], 'Pages'));
         return $rules;
     }
 

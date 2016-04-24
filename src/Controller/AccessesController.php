@@ -77,6 +77,12 @@ class AccessesController extends AppController
                 $this->request->data['access']['systemVersion']
             );
 
+            //if (isset($this->request->data['access']['page_id'])) {
+                $dataToSave['page_id'] = $this->request->data['access']['page_id'];
+            //} else {
+                //$dataToSave['page_id'] = 1;
+            //}
+
             $dataToSave['active'] = 1;
 
             $access = $this->Accesses->newEntity($dataToSave);
